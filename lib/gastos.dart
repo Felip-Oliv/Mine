@@ -6,29 +6,29 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Mine',
+      title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Home Page'),
+      home: const GastosPage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+class GastosPage extends StatefulWidget {
+  const GastosPage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<GastosPage> createState() => _GastosPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _GastosPageState extends State<GastosPage> {
   int _counter = 0;
 
   void _incrementCounter() {
