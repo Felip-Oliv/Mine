@@ -1,24 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-  
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const GastosPage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
 class GastosPage extends StatefulWidget {
   const GastosPage({Key? key, required this.title}) : super(key: key);
 
@@ -29,43 +10,55 @@ class GastosPage extends StatefulWidget {
 }
 
 class _GastosPageState extends State<GastosPage> {
-  int _counter = 0;
 
-  void _incrementCounter() {
+  void _incluirGastos() {
     setState(() {
-      _counter++;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
 
         title: Text(widget.title),
       ),
-      body: Center(
-
-        child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
+      body: ListView(
+        children: [
+          ListTile(
+            onTap: (){
+              print('item clicado 1');
+            },
+            title: Text('13/09/22 Gasto 1'),
+            subtitle: Text('sub 1'),
+          ),
+          ListTile(
+            onTap: (){
+              print('item clicado 2');
+            },
+            title: Text('13/09/22 Gasto 2'),
+            subtitle: Text('sub 2'),
+          ),
+          ListTile(
+            onTap: (){
+              print('item clicado 3');
+            },
+            title: Text('14/09/22 Gasto 3'),
+            subtitle: Text('sub 3'),
+          ),
+        ],
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: _incluirGastos,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
+      bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        color: Colors.blueGrey,
+        child: Container(height: 40,),
+      ),
     );
   }
 }

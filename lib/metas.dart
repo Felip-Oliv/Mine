@@ -1,24 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-  
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MetasPage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
 class MetasPage extends StatefulWidget {
   const MetasPage({Key? key, required this.title}) : super(key: key);
 
@@ -39,33 +20,68 @@ class _MetasPageState extends State<MetasPage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
 
         title: Text(widget.title),
       ),
-      body: Center(
+      body: ListView(
+        children: [
+          Container(
+            height: 200,
+            child: Card(
+              color: Colors.amberAccent,
+              child: InkWell(
+                onTap: (){
 
-        child: Column(
+                },
+                child: Text(
+                  'Meta 1',
+                ),
+              ),
+            ),
+          ),
+          Container(
+            height: 200,
+            child: Card(
+              color: Colors.amberAccent,
+              child: InkWell(
+                onTap: (){
 
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+                },
+                child: Text(
+                  'Meta 2',
+                ),
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+          ),
+          Container(
+            height: 200,
+            child: Card(
+              color: Colors.amberAccent,
+              child: InkWell(
+                onTap: (){
+
+                },
+                child: Text(
+                  'Meta 3',
+                ),
+              ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
+      bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        color: Colors.blueGrey,
+        child: Container(height: 40,),
+      ),
     );
   }
 }
