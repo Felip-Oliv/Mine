@@ -1,11 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:mineapp/afazeres.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 
 import 'gastos.dart';
 import 'metas.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final keyApplicationId = 'O0p5fOCHDD2bs6N0D2FsW7M9VCktdTJczgjCIYOy';
+  final keyClientKey = '37bYJEI0lP7Q4KFFPKAK85U7bCZUDDKf5qrBidqM';
+  final keyParseServerUrl = 'https://parseapi.back4app.com';
+
+  await Parse().initialize(keyApplicationId, keyParseServerUrl,
+      clientKey: keyClientKey, autoSendSessionId: true);
+
+  var firstObject = ParseObject('Mensagem')
+    ..set(
+        'message', 'Hey ! First message from Flutter. Parse is now connected');
+  await firstObject.save();
+
+  print('done');
   runApp(const MyApp());
+
 }
 
 class MyApp extends StatelessWidget {
