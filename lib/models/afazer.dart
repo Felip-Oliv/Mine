@@ -1,7 +1,8 @@
-class Afazer{
+
+class Afazer {
 
   String id = '';
-  String titulo ='';
+  String titulo = '';
   bool realizada = false;
 
 }
